@@ -1,0 +1,3 @@
+{% for key, value in SALT_GRAINS.iteritems() %}
+{{ key }}: {{ value }}
+{% endfor %}

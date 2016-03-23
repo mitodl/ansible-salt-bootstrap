@@ -1,0 +1,13 @@
+- name: Download salt bootstrap script
+  get_url: >-
+    url="https://bootstrap.saltstack.com"
+    dest="/tmp/install_salt.sh"
+    mode="0755"
+
+- name: Execute bootstrap script
+  shell: "/tmp/install_salt.sh {{ SALT_BOOTSTRAP_PARAMS }}"
+  sudo: yes
+
+- name: Create initial grains file
+  template: src=grains.j2 dest=/etc/salt/grains
+  sudo: yes
